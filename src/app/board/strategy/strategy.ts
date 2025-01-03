@@ -92,7 +92,21 @@ export function createShuffledFrame(board: Board) {
       'C': [{ x: 7, y: 7 }, { x: 6, y: 7 }],
       'D': [{ x: 6, y: 7 }, { x: 5, y: 7 }],
       'E': [{ x: 5, y: 7 }, { x: 4, y: 7 }],
-    }
+    },
+    5: {
+      'A': [{ x: 4, y: 7 }, { x: 3, y: 7 }],
+      'B': [{ x: 3, y: 7 }, { x: 3, y: 6 }],
+      'C': [{ x: 3, y: 6 }, { x: 2, y: 6 }],
+      'D': [{ x: 2, y: 6 }, { x: 2, y: 5 }],
+      'E': [{ x: 2, y: 5 }, { x: 1, y: 5 }],
+    },
+    6: {
+      'A': [{ x: 0, y: 4 }, { x: 0, y: 3 }],
+      'B': [{ x: 0, y: 3 }, { x: 1, y: 3 }],
+      'C': [{ x: 1, y: 2 }, { x: 2, y: 2 }],
+      'D': [{ x: 2, y: 2 }, { x: 2, y: 1 }],
+      'E': [{ x: 2, y: 1 }, { x: 3, y: 1 }],
+    },
   }
 
   const frameTiles: Array<Array<{ segment: keyof Segment; resource: ResourceType }>> = [
@@ -126,6 +140,22 @@ export function createShuffledFrame(board: Board) {
       {
         segment: 'D',
         resource: ResourceType.WHEAT,
+      },
+    ],
+    [ // Tile 5
+      {
+        segment: 'C',
+        resource: ResourceType.WOOD,
+      },
+    ],
+    [ // Tile 6
+      {
+        segment: 'A',
+        resource: ResourceType.ANY,
+      },
+      {
+        segment: 'D',
+        resource: ResourceType.BRICK,
       },
     ],
   ]
