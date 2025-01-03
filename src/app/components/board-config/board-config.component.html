@@ -1,37 +1,31 @@
 <mat-card-title>Settings</mat-card-title>
 <form [formGroup]="configForm" (ngSubmit)="emitConfig()">
-  <app-config-choice label="Board Shape"
-                     formControlName="boardShape"
-                     [options]="boardShapes"></app-config-choice>
+  <app-config-choice label="Board Shape" formControlName="boardShape" [options]="boardShapes"></app-config-choice>
 
   <div [style.display]="desertPlacementEnabled ? '' : 'none'">
-    <app-config-choice label="Desert Placement"
-                      formControlName="desertPlacement"
-                      [options]="desertPlacements"></app-config-choice>
+    <app-config-choice label="Desert Placement" formControlName="desertPlacement"
+      [options]="desertPlacements"></app-config-choice>
   </div>
 
   <div [style.display]="resourceDistributionEnabled ? '' : 'none'">
-    <app-config-slider [style.display]="resourceDistributionEnabled ? '' : 'none'"
-                      label="Resource Distribution"
-                      minLabel="Clumped"
-                      maxLabel="Even"
-                      formControlName="resourceDistribution"></app-config-slider>
+    <app-config-slider [style.display]="resourceDistributionEnabled ? '' : 'none'" label="Resource Distribution"
+      minLabel="Clumped" maxLabel="Even" formControlName="resourceDistribution"></app-config-slider>
   </div>
 
-  <app-config-slider label="Number Distribution"
-                     minLabel="Greedy"
-                     maxLabel="Fair"
-                     formControlName="numberDistribution"></app-config-slider>
+  <app-config-slider label="Number Distribution" minLabel="Greedy" maxLabel="Fair"
+    formControlName="numberDistribution"></app-config-slider>
 
   <div class="checkbox" [style.display]="hasDefaultPorts ? '' : 'none'">
     <mat-checkbox formControlName="shufflePorts">Shuffle ports</mat-checkbox>
   </div>
-  <div class="checkbox">
+  <div class="checkbox" [style.display]="hasDefaultPorts ? '' : 'none'">
+    <mat-checkbox formControlName="portsInFrame">Has a frame with ports</mat-checkbox>
+  </div>
+  <div class="checkbox"[style.display]="hasDefaultPorts ? '' : 'none'">
     <mat-checkbox formControlName="allowResourceOnPort" [checked]="true">Allow same resource as port</mat-checkbox>
   </div>
 
   <div id="submit-box">
-    <button mat-raised-button color="accent"
-            type="submit">Generate</button>
+    <button mat-raised-button color="accent" type="submit">Generate</button>
   </div>
 </form>

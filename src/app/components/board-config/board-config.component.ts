@@ -13,6 +13,7 @@ export interface FormState {
   resourceDistribution: number;
   numberDistribution: number;
   shufflePorts: boolean;
+  portsInFrame: boolean;
   allowResourceOnPort: boolean;
 }
 
@@ -69,6 +70,7 @@ export class BoardConfigComponent {
   desertPlacements: OptionDef<DesertPlacement>[] = DESERT_PLACEMENTS_WITH_CENTER;
 
   hasDefaultPorts = true;
+  hasPortsInFrame = true;
   desertPlacementEnabled = true;
   resourceDistributionEnabled = true;
 
@@ -76,9 +78,11 @@ export class BoardConfigComponent {
     boardShape: this.boardShapes[0].value,
     desertPlacement: this.desertPlacements[0].value,
     resourceDistribution: CONFIG_SLIDER_MAX_VALUE,
-    numberDistribution: Math.floor(CONFIG_SLIDER_MAX_VALUE * 0.85),
+    //numberDistribution: Math.floor(CONFIG_SLIDER_MAX_VALUE * 0.85),
+    numberDistribution: CONFIG_SLIDER_MAX_VALUE,
     shufflePorts: false,
-    allowResourceOnPort: true,
+    portsInFrame: false,
+    allowResourceOnPort: false,
   });
 
   @Output() configUpdate = new EventEmitter<SettlersConfig>();
@@ -90,7 +94,7 @@ export class BoardConfigComponent {
 
       // TODO: Get "clumped" resource distribution working on seafarers.
       this.resourceDistributionEnabled =
-          boardShape === BoardShape.STANDARD || boardShape === BoardShape.EXPANSION6;
+        boardShape === BoardShape.STANDARD || boardShape === BoardShape.EXPANSION6;
 
       const spec = BOARD_SPECS[boardShape];
 
@@ -142,6 +146,7 @@ export class BoardConfigComponent {
               state.resourceDistribution / CONFIG_SLIDER_MAX_VALUE : 1,
           numberDistribution: state.numberDistribution / CONFIG_SLIDER_MAX_VALUE,
           shufflePorts: this.hasDefaultPorts ? state.shufflePorts : true,
+          portsInFrame: this.hasPortsInFrame ? state.portsInFrame : true,
           allowResourceOnPort: state.allowResourceOnPort,
         });
     return {
