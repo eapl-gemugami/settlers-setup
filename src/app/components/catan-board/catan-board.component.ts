@@ -364,7 +364,7 @@ export class CatanBoardComponent implements OnChanges {
   private renderCorners() {
     const corners = this.board.corners.slice();
     corners.sort((a, b) => b.score! - a.score!);
-  
+
     const scale = this.sizeAndScale.scale;
 
     for (const corner of corners) {
@@ -379,7 +379,7 @@ export class CatanBoardComponent implements OnChanges {
           circle.fillColor = new paper.Color('#0ba600');
           break;
         // second best
-        case corners[1]: 
+        case corners[1]:
           circle.fillColor = new paper.Color('#a3a303');
           break;
         case corners[corners.length - 1]:
@@ -543,7 +543,9 @@ export class CatanBoardComponent implements OnChanges {
 
     // Create label text.
     const color = port.resource === ResourceType.ANY ? 'white' : 'black';
-    const text = port.resource === ResourceType.ANY ? '?' : port.resource.substr(0, 2);
+    //const text = port.resource === ResourceType.ANY ? '?' : port.resource.substr(0, 2);
+    const text = port.resource === ResourceType.ANY ? '?' : port.resource.substring(0, 2);
+    
     const label = this.renderText(text,
       labelPoint.subtract(new paper.Point(0, 1).multiply(labelScale)), { color, scale: labelScale });
   }
