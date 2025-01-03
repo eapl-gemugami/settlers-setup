@@ -1,6 +1,6 @@
 import { ResourceType, Hex, BoardSpec } from '../board';
 import { BoardShape } from './shapes-enum';
-import { createByCounts, generateStandardShapedBoard, inCoords, generatePorts } from './spec-util';
+import { createByCounts, generateStandardShapedBoard, } from './spec-util';
 
 export const EXPANSION6 = {
   shape: BoardShape.EXPANSION6,
@@ -30,12 +30,10 @@ export const EXPANSION6 = {
     }, {
       resource: ResourceType.ANY,
       corners: [{x: 12, y: 3}, {x: 12, y: 4}],
-    },
-    {
+    }, {
       resource: ResourceType.BRICK,
       corners: [{x: 11, y: 5}, {x: 10, y: 5}],
-    },
-    {
+    }, {
       resource: ResourceType.SHEEP,
       corners: [{x: 9, y: 6}, {x: 9, y: 7}],
     }, {
@@ -44,12 +42,10 @@ export const EXPANSION6 = {
     }, {
       resource: ResourceType.ANY,
       corners: [{x: 4, y: 7}, {x: 3, y: 7}],
-    },
-    {
+    }, {
       resource: ResourceType.WHEAT,
       corners: [{x: 2, y: 6}, {x: 2, y: 5}],
-    },
-    {
+    }, {
       resource: ResourceType.ANY,
       corners: [{x: 1, y: 4}, {x: 0, y: 4}],
     }, {

@@ -272,7 +272,6 @@ export class Hex {
   }
 }
 
-
 export class Board {
   readonly shape: BoardShape;
   // So the BoardSpec for a description of what this value actually means.
@@ -281,7 +280,7 @@ export class Board {
   // are what's documented in the Default Board Layout at the top of this file.
   readonly hexGrid: HexGrid;
   readonly cornerGrid: CornerGrid;
-  readonly ports: ReadonlyArray<Port>;
+  ports: Array<Port>;
   // Cached value for get hexes.
   private flatHexes: ReadonlyArray<Hex>|undefined;
   // Cached value fro get mutableHexes.
@@ -306,7 +305,7 @@ export class Board {
     }
     this.setRequiredResources();
 
-    this.ports = spec.ports() as ReadonlyArray<Port>;
+    this.ports = spec.ports() as Array<Port>;
     this.cornerGrid = this.generateCornerGrid();
   }
 
